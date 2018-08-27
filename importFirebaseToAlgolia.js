@@ -5,9 +5,21 @@ var algoliasearch = require('algoliasearch');
 // load values from the .env file in this directory into process.env
 dotenv.load();
 
-var serviceAccount = require("./serviceAccountKey.json");
+//var serviceAccount = require("./serviceAccountKey.json");
+var private_key_nottrim=process.env.FIREBASE_PRIVATE_KEY;
 firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(serviceAccount),
+    credential: firebaseAdmin.credential.cert({
+        "type": process.env.FIREBASE_TYPE,
+        "project_id": process.env.FIREBASE_PROJECT_ID,
+        "private_key_id": process.env.FIREBASE_KEY_ID,
+        "private_key": private_key_nottrim.replace(/\\n/g, '\n'),
+        "client_email": process.env.FIREBASE_CLIENT_EMAIL,
+        "client_id": process.env.FIREBASE_CLIENT_ID,
+        "auth_uri": process.env.FIREBASE_AUTH_URI,
+        "token_uri": process.env.FIREBASE_TOKEN_URI,
+        "auth_provider_x509_cert_url": process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+        "client_x509_cert_url": process.env.FIREBASE_CLIENT_X509_CERT_URL
+    }),
   databaseURL: process.env.FIREBASE_DATABASE_URL
 });
 var database = firebaseAdmin.database();
