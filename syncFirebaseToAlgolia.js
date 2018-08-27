@@ -24,9 +24,9 @@ firebaseAdmin.initializeApp({
 var database = firebaseAdmin.database();
 
 var algolia = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
-var index = algolia.initIndex('contacts');
+var index = algolia.initIndex('eventapp');
 
-var contactsRef = database.ref("/contacts");
+var contactsRef = database.ref("/");
 
 contactsRef.on('child_added', addOrUpdateIndexRecord);
 contactsRef.on('child_changed', addOrUpdateIndexRecord);
