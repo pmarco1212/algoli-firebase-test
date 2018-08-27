@@ -6,12 +6,13 @@ var algoliasearch = require('algoliasearch');
 dotenv.load();
 
 //var serviceAccount = require("./serviceAccountKey.json");
+var private_key_nottrim=process.env.FIREBASE_PRIVATE_KEY;
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert({
         "type": process.env.FIREBASE_TYPE,
         "project_id": process.env.FIREBASE_PROJECT_ID,
         "private_key_id": process.env.FIREBASE_KEY_ID,
-        "private_key": process.env.FIREBASE_PRIVATE_KEY,
+        "private_key": private_key_nottrim.replace(/\\n/g, '\n'),
         "client_email": process.env.FIREBASE_CLIENT_EMAIL,
         "client_id": process.env.FIREBASE_CLIENT_ID,
         "auth_uri": process.env.FIREBASE_AUTH_URI,
