@@ -5,9 +5,9 @@
   "description": "Shows how to index Firebase data with Algolia",
   "main": "index.js",
   "scripts": {
-    "start": "node syncFirebaseToAlgolia",
+    "sync": "node syncFirebaseToAlgolia",
     "load": "node loadFirebase",
-    "import": "node importFirebaseToAlgolia"
+    "start": "node importFirebaseToAlgolia"
   },
   "author": {
     "name": "Algolia, Inc.",
